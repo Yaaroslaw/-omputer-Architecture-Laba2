@@ -1,15 +1,13 @@
-
-
 from model import *
 
 
 def menu():  # Взаємодія з користувачем
-    print(" 1.Show ")
-    print(" 2.Add day ")
+    print(" 1.Show")
+    print(" 2.Add day")
     print(" 3.Add month")
     print(" 4.Delete day")
     print(" 5.Delete month")
-    print(" 6.Exit ")
+    print(" 6.Exit")
     choose()
     want_cont()
 
@@ -17,8 +15,7 @@ def menu():  # Взаємодія з користувачем
 def choose():
     n = input("Your choice: ")
     if n == "1":
-        pass
-        #show_month()
+        show_month()
     elif n == "2":
         add_day_param()
     elif n == "3":
@@ -31,28 +28,38 @@ def choose():
         exit()
 
 
+
+def show_month():
+    for key in year:
+        print(key)
+    month = input("Enter the month ")
+    # check
+    for i in year[month]:
+        print("Number: {}, Pressure: {}, Wind: {}, Temperature: {}".format(i.number, i.pressure, i.wind, i. temperature))
+
+
 def add_day_param():
-    month = input("Enter the month")
+    month = input("Enter the month ")
     # check month
-    number = input("Enter the number")
-    pressure = input("Enter the pressure")
-    temperature = input("Enter the temperature")
-    wind = input("Enter the wind")
+    number = input("Enter the number ")
+    pressure = input("Enter the pressure ")
+    temperature = input("Enter the temperature ")
+    wind = input("Enter the wind ")
     add_day(pressure, temperature, wind, month, number)
 
 
 def add_del_month_param(n):
-    name = input("Enter the month")
+    name = input("Enter the month ")
     # check
     if n == 1:
         add_month(name)
-    else:
+    elif n == 2:
         del_month(name)
 
 
 def del_day_param():
-    month = input("Enter the month")
-    number = input("Enter the number")
+    month = input("Enter the month ")
+    number = input("Enter the number ")
     # check
     del_day(month, number)
 
