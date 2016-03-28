@@ -3,51 +3,64 @@ from controller import *
 
 def menu():  # Взаємодія з користувачем
     print(" 1.Show ")
-    print("  _________")
     print(" 2.Add day ")
-    print("  _________")
     print(" 3.Add month")
-    print("  _________")
-    print(" 4.Exit ")
-    choice = input("Your choice: ")
-    if choice == "1":
+    print(" 4.Delete day")
+    print(" 5.Delete month")
+    print(" 6.Exit ")
+    choose()
+    want_cont()
+
+
+def choose():
+    n = input("Your choice: ")
+    if n == "1":
         show_month()
-        print("If you want to continue enter 1, else enter any key")
-        choice2 = input("Your choice: ")
-        if choice2 == "1":
-            menu()
-        else:
-            exit()
-    if choice == "2":
-        print("Months in the weather-blog: ")
-        for i in season.keys():
-            print("- " + i)
-        name = input("Please, type the name of "
-                     "the month to which you want to add your observation:  ")
-        param(name)
-        print("If you want to continue enter 1, else enter any key ")
-        choice2 = input("Your choice: ")
-        if choice2 == "1":
-            menu()
-        else:
-            exit()
-    if choice == "3":
-        name = input("Please, type the name of the month ")
+    elif n == "2":
+        add_day_param()
+    elif n == "3":
+        add_del_month_param(1)
+    elif n == "4":
+        del_day_param()
+    elif n == "5":
+        add_del_month_param(2)
+    elif n == "6":
+        exit()
+
+
+def add_day_param():
+    month = input("Enter the month")
+    # check month
+    number = input("Enter the number")
+    pressure = input("Enter the pressure")
+    temperature = input("Enter the temperature")
+    wind = input("Enter the wind")
+    add_day(pressure, temperature, wind, month, number)
+
+
+def add_del_month_param(n):
+    name = input("Enter the month")
+    # check
+    if n == 1:
         add_month(name)
-        print("Do you want to add days to this month? ")
-        day_choice = input("Enter 1 to add, enter 2 to go back to menu ")
-        if day_choice == "1":
-            param(name)
-            print("If you want to continue enter 1, else enter any key ")
-            choice2 = input("Your choice: ")
-            if choice2 == "1":
-                menu()
-            else:
-                exit()
-        elif day_choice == "2":
-            menu()
-    if choice == "4":
-            exit()
+    else:
+        del_month(name)
+
+
+def del_day_param():
+    month = input("Enter the month")
+    number = input("Enter the number")
+    # check
+    del_day(month, number)
+
+
+def want_cont():
+    print("If you want to continue enter 1, else enter any key ")
+    choice2 = input("Your choice: ")
+    if choice2 == "1":
+        menu()
+    else:
+        exit()
 
 
 if __name__ == '__main__':
