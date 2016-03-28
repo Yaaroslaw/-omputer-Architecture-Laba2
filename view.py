@@ -23,8 +23,6 @@ def menu():  # Взаємодія з користувачем
         for i in season.keys():
             print("- " + i)
         name = input("Please, type the name of "
-
-
                      "the month to which you want to add your observation:  ")
         param(name)
         print("If you want to continue enter 1, else enter any key ")
