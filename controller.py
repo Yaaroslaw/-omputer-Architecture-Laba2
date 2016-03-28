@@ -2,7 +2,8 @@
 from One_file_to_rule_them_all import *
 from view import menu
 
-def add_day_param():
+
+def add_day_param(): # Додавання днів
     month = input("Enter the month ")
     # check month
     number = input("Enter the number ")
@@ -12,7 +13,7 @@ def add_day_param():
     add_day(pressure, temperature, wind, month, number)
 
 
-def add_del_month_param(n):
+def add_del_month_param(n): # Додавання місяців
     name = input("Enter the month ")
     # check
     if n == 1:
@@ -21,7 +22,7 @@ def add_del_month_param(n):
         del_month(name)
 
 
-def del_day_param():
+def del_day_param(): # видалення днів
     month = input("Enter the month ")
     number = input("Enter the number ")
     # check
@@ -37,7 +38,7 @@ def want_cont():
         exit()
 
 
-def show_month():
+def show_month(): # виведення на екран інформації про місяці та дні
     for key in year:
         print(key)
     month = input("Enter the month ")
