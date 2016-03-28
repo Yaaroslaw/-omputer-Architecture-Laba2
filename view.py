@@ -1,4 +1,5 @@
-from controller import *
+
+from model import *
 
 
 def menu():  # Взаємодія з користувачем
@@ -15,7 +16,8 @@ def menu():  # Взаємодія з користувачем
 def choose():
     n = input("Your choice: ")
     if n == "1":
-        show_month()
+        pass
+        #show_month()
     elif n == "2":
         add_day_param()
     elif n == "3":
@@ -63,6 +65,4 @@ def want_cont():
         exit()
 
 
-if __name__ == '__main__':
-    season = creation_blog()
-    menu()
+menu()
