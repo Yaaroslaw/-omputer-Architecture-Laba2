@@ -31,15 +31,13 @@ def choose():
         except IOError:
             f = open('1.txt', "wb")
         f.close()
-
+    elif s == 'yml':
+        with open('1.yml', 'r') as f:
+            One_file_to_rule_them_all.year = yaml.load(f)
     elif s == 'json':
         with open('1.json', 'r') as f:
             s2 = f.read()
             One_file_to_rule_them_all.year = jsonpickle.decode(s2)
-
-    elif s == 'yml':
-        with open('1.yml', 'r') as f:
-            One_file_to_rule_them_all.year = yaml.load(f)
 
     n = input("Your choice: ")
     if n == "1":
