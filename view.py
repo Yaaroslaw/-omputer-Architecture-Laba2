@@ -18,7 +18,7 @@ def menu():  # Взаємодія з користувачем
     want_cont()
 
 
-def choose():
+def choose():  # Function of choosing
 
     config = configparser.RawConfigParser()
     config.read('next.ini')
@@ -69,7 +69,7 @@ def choose():
     # f.close()
 
 
-def want_cont():
+def want_cont(): # Function for continuing
     print("If you want to continue enter 1, else enter any key ")
     choice2 = input("Your choice: ")
     if choice2 == "1":
