@@ -1,6 +1,10 @@
 
 from controller import *
-from model import initial_values
+import pickle
+import jsonpickle
+import yaml
+import One_file_to_rule_them_all
+#import configparser
 
 
 def menu():  # Взаємодія з користувачем
@@ -10,12 +14,29 @@ def menu():  # Взаємодія з користувачем
     print(" 4.Delete day")
     print(" 5.Delete month")
     print(" 6.Exit")
-    initial_values()
     choose()
     want_cont()
 
 
 def choose():
+    s = "yml"
+    if s == 'pickle':
+        try:
+            f = open('1.txt', "rb")
+            One_file_to_rule_them_all.year = pickle.load(f)
+        except IOError:
+            f = open('1.txt', "wb")
+        f.close()
+
+    elif s == 'json':
+        with open('1.json', 'r') as f:
+            s2 = f.read()
+            One_file_to_rule_them_all.year = jsonpickle.decode(s2)
+
+    elif s == 'yml':
+        with open('1.yml', 'r') as f:
+            One_file_to_rule_them_all.year = yaml.load(f)
+
     n = input("Your choice: ")
     if n == "1":
         show_month()
@@ -30,5 +51,40 @@ def choose():
     elif n == "6":
         exit()
 
+    if s == 'pickle':
+        f = open('1.txt', 'wb')
+        pickle.dump(One_file_to_rule_them_all.year, f)
 
+    elif s == 'json':
+        with open('1.json', 'w') as f:
+            str = jsonpickle.encode(One_file_to_rule_them_all.year)
+            f.write(str)
+
+    elif s == 'yml':
+        with open('1.yml', 'w') as f:
+            f.write(yaml.dump(One_file_to_rule_them_all.year))
+
+    f.close()
+
+
+def want_cont():
+    print("If you want to continue enter 1, else enter any key ")
+    choice2 = input("Your choice: ")
+    if choice2 == "1":
+        menu()
+    else:
+        exit()
+
+initial_values()
 menu()
+
+
+
+
+
+
+
+
+
+
+
