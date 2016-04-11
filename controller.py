@@ -26,4 +26,3 @@ def del_day_param():  # видалення днів
     number = input("Enter the number ")
     # check
     del_day(month, number)
-

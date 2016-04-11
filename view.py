@@ -1,4 +1,3 @@
-
 from controller import *
 import pickle
 import jsonpickle
@@ -18,8 +17,7 @@ def menu():  # Взаємодія з користувачем
     want_cont()
 
 
-def choose():  # Function of choosing
-
+def choose():
     config = configparser.RawConfigParser()
     config.read('next.ini')
     s = config.get('Section', 's')
@@ -31,13 +29,15 @@ def choose():  # Function of choosing
         except IOError:
             f = open('1.txt', "wb")
         f.close()
-    elif s == 'yml':
-        with open('1.yml', 'r') as f:
-            One_file_to_rule_them_all.year = yaml.load(f)
+
     elif s == 'json':
         with open('1.json', 'r') as f:
             s2 = f.read()
             One_file_to_rule_them_all.year = jsonpickle.decode(s2)
+
+    elif s == 'yml':
+        with open('1.yml', 'r') as f:
+            One_file_to_rule_them_all.year = yaml.load(f)
 
     n = input("Your choice: ")
     if n == "1":
@@ -69,7 +69,7 @@ def choose():  # Function of choosing
     # f.close()
 
 
-def want_cont(): # Function for continuing
+def want_cont():
     print("If you want to continue enter 1, else enter any key ")
     choice2 = input("Your choice: ")
     if choice2 == "1":
@@ -79,14 +79,3 @@ def want_cont(): # Function for continuing
 
 initial_values()
 menu()
-
-
-
-
-
-
-
-
-
-
-
