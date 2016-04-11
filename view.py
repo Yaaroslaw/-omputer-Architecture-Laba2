@@ -4,7 +4,7 @@ import pickle
 import jsonpickle
 import yaml
 import One_file_to_rule_them_all
-#import configparser
+import configparser
 
 
 def menu():  # Взаємодія з користувачем
@@ -19,7 +19,11 @@ def menu():  # Взаємодія з користувачем
 
 
 def choose():
-    s = "yml"
+
+    config = configparser.RawConfigParser()
+    config.read('next.ini')
+    s = config.get('Section', 's')
+
     if s == 'pickle':
         try:
             f = open('1.txt', "rb")
@@ -64,7 +68,7 @@ def choose():
         with open('1.yml', 'w') as f:
             f.write(yaml.dump(One_file_to_rule_them_all.year))
 
-    f.close()
+    # f.close()
 
 
 def want_cont():
